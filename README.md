@@ -22,24 +22,27 @@ This scenario is intended to mimic a simple crawler who is just looking on each 
 
 The test data used is 99Kb and parses to ~2,700 nodes.
 
-Results vary a bit, probably due to GC, and either library may end up the faster for a given run. Generally results look something like:
+The Meeseeks XPath chosen is a naive one similar to the CSS selectors, and unsurprisingly it runs slower than either CSS version. A more optimized solution would avoid a lot of filtering and run in around the same time as the CSS versions, but I thought it would be more useful to see how similar solutions stacked up.
 
 ```
 $ MIX_ENV=prod mix compile
 $ MIX_ENV=prod mix run bench/wiki_links.exs
 Benchmarking Floki select links...
-Benchmarking Meeseeks select links...
+Benchmarking Meeseeks CSS select links...
+Benchmarking Meeseeks XPath select links...
 
-Name                            ips        average  deviation         median
-Meeseeks select links         66.05       15.14 ms    ±28.50%       13.72 ms
-Floki select links            63.56       15.73 ms    ±21.04%       15.17 ms
+Name                                  ips        average  deviation         median
+Meeseeks CSS select links           75.95       13.17 ms    ±28.88%       10.85 ms
+Floki select links                  63.05       15.86 ms    ±20.40%       15.09 ms
+Meeseeks XPath select links         53.03       18.86 ms    ±18.97%       18.80 ms
 
 Comparison:
-Meeseeks select links         66.05
-Floki select links            63.56 - 1.04x slower
+Meeseeks CSS select links           75.95
+Floki select links                  63.05 - 1.20x slower
+Meeseeks XPath select links         53.03 - 1.43x slower
 ```
 
-If you're going to be building a simple crawler where all you care about is searching a page for links, both Meeseeks and Floki will probably perform similarly.
+If you're going to be building a simple crawler where all you care about is searching a page for links, both Meeseeks and Floki will probably perform similarly. If you're going to use XPath selectors, avoid early filters if you can.
 
 [Implementation](https://github.com/mischov/meeseeks_floki_bench/blob/master/lib/meeseeks_floki_bench/wiki_links.ex)
 
@@ -51,21 +54,24 @@ This scenario mimics the use case of selecting a list of items from some HTML pa
 
 The test data used is 349Kb and parses to ~6,900 nodes.
 
-Because of differences in the selection process between Meeseeks and Floki, Meeseeks tends to come out a bit ahead in this benchmark, with results like:
+Because of differences in the selection process between Meeseeks and Floki, both Meeseeks implementations come out ahead of Floki in this benchmark, and XPath tends keeps pretty close to CSS.
 
 ```
 $ MIX_ENV=prod mix compile
 $ MIX_ENV=prod mix run bench/trending_js.exs
 Benchmarking Floki select repos...
-Benchmarking Meeseeks select repos...
+Benchmarking Meeseeks CSS select repos...
+Benchmarking Meeseeks XPath select repos...
 
-Name                            ips        average  deviation         median
-Meeseeks select repos         12.65       79.06 ms     ±9.82%       80.70 ms
-Floki select repos             9.11      109.78 ms    ±15.82%      113.71 ms
+Name                                  ips        average  deviation         median
+Meeseeks CSS select repos           12.83       77.94 ms    ±13.73%       81.13 ms
+Meeseeks XPath select repos         11.80       84.75 ms    ±11.00%       89.85 ms
+Floki select repos                   8.84      113.18 ms    ±16.83%      123.20 ms
 
 Comparison:
-Meeseeks select repos         12.65
-Floki select repos             9.11 - 1.39x slower
+Meeseeks CSS select repos           12.83
+Meeseeks XPath select repos         11.80 - 1.09x slower
+Floki select repos                   8.84 - 1.45x slower
 ```
 
 If this scenario resembles your use case, it might be worth considering Meeseeks for performance reasons.
