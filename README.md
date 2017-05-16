@@ -14,6 +14,14 @@ Floki is benchmarked using the `html5ever` parser.
 
 Performance characteristics are different for the `mochiweb_html` parser, but I strongly recommend always using the `html5ever` parser unless you're sure malformed HTML won't be a problem.
 
+### Setup
+
+Your OS is probably constantly changing your processor speed (to save energy and reduce heat), which leads to inconsistent results when benchmarking.
+
+Before running benchmarks, set processors to some fixed speed. For Debian instructions on how to do this, see [here](https://wiki.debian.org/HowTo/CpuFrequencyScaling).
+
+Thanks to [this article](https://medium.com/learn-elixir/speed-up-data-access-in-elixir-842617030514) for pointing this out.
+
 ## The "Wiki Links" Benchmark
 
 The scenario tested by "Wiki Links" is simple: select every link from a particular Wikipedia article to other Wikipedia articles.
@@ -32,14 +40,14 @@ Benchmarking Meeseeks CSS select links...
 Benchmarking Meeseeks XPath select links...
 
 Name                                  ips        average  deviation         median
-Meeseeks CSS select links           75.95       13.17 ms    ±28.88%       10.85 ms
-Floki select links                  63.05       15.86 ms    ±20.40%       15.09 ms
-Meeseeks XPath select links         53.03       18.86 ms    ±18.97%       18.80 ms
+Meeseeks CSS select links           92.43       10.82 ms     ±2.82%       10.74 ms
+Floki select links                  78.05       12.81 ms     ±6.65%       12.97 ms
+Meeseeks XPath select links         69.92       14.30 ms     ±2.11%       14.20 ms
 
 Comparison:
-Meeseeks CSS select links           75.95
-Floki select links                  63.05 - 1.20x slower
-Meeseeks XPath select links         53.03 - 1.43x slower
+Meeseeks CSS select links           92.43
+Floki select links                  78.05 - 1.18x slower
+Meeseeks XPath select links         69.92 - 1.32x slower
 ```
 
 If you're going to be building a simple crawler where all you care about is searching a page for links, both Meeseeks and Floki will probably perform similarly. If you're going to use XPath selectors, avoid early filters if you can.
@@ -64,14 +72,14 @@ Benchmarking Meeseeks CSS select repos...
 Benchmarking Meeseeks XPath select repos...
 
 Name                                  ips        average  deviation         median
-Meeseeks CSS select repos           12.83       77.94 ms    ±13.73%       81.13 ms
-Meeseeks XPath select repos         11.80       84.75 ms    ±11.00%       89.85 ms
-Floki select repos                   8.84      113.18 ms    ±16.83%      123.20 ms
+Meeseeks CSS select repos           22.32       44.80 ms     ±1.16%       44.72 ms
+Meeseeks XPath select repos         21.53       46.44 ms     ±1.55%       46.29 ms
+Floki select repos                  15.23       65.64 ms     ±2.73%       65.22 ms
 
 Comparison:
-Meeseeks CSS select repos           12.83
-Meeseeks XPath select repos         11.80 - 1.09x slower
-Floki select repos                   8.84 - 1.45x slower
+Meeseeks CSS select repos           22.32
+Meeseeks XPath select repos         21.53 - 1.04x slower
+Floki select repos                  15.23 - 1.47x slower
 ```
 
 If this scenario resembles your use case, it might be worth considering Meeseeks for performance reasons.
