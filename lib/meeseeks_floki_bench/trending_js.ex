@@ -25,14 +25,14 @@ defmodule MeeseeksFlokiBench.TrendingJs do
   end
 
   defp floki_repo_stars(result) do
-    Floki.find(result, ":nth-child(4) > :nth-child(3)")
+    Floki.find(result, "div:nth-child(4) > :nth-child(3)")
     |> List.first()
     |> Floki.text(deep: false)
     |> String.trim()
   end
 
   defp floki_repo_stars_today(result) do
-    Floki.find(result, ":nth-child(4) > :nth-child(6)")
+    Floki.find(result, "div:nth-child(4) > :nth-child(6)")
     |> List.first()
     |> Floki.text(deep: false)
     |> String.trim()
@@ -50,17 +50,17 @@ defmodule MeeseeksFlokiBench.TrendingJs do
   end
 
   defp meeseeks_css_repo_name(result) do
-    Meeseeks.one(result, css(":nth-child(1) h3 a"))
+    Meeseeks.one(result, css("div h3 a"))
     |> Meeseeks.own_text() # Already trims text, so no trim
   end
 
   defp meeseeks_css_repo_stars(result) do
-    Meeseeks.one(result, css(":nth-child(4) > :nth-child(3)"))
+    Meeseeks.one(result, css("div:nth-child(4) > :nth-child(3)"))
     |> Meeseeks.own_text()
   end
 
   defp meeseeks_css_repo_stars_today(result) do
-    Meeseeks.one(result, css(":nth-child(4) > :nth-child(6)"))
+    Meeseeks.one(result, css("div:nth-child(4) > :nth-child(6)"))
     |> Meeseeks.own_text()
   end
 
@@ -76,17 +76,17 @@ defmodule MeeseeksFlokiBench.TrendingJs do
   end
 
   defp meeseeks_xpath_repo_name(result) do
-    Meeseeks.one(result, xpath("./*[1]/h3/a"))
+    Meeseeks.one(result, xpath("./div/h3/a"))
     |> Meeseeks.own_text() # Already trims text, so no trim
   end
 
   defp meeseeks_xpath_repo_stars(result) do
-    Meeseeks.one(result, xpath("./*[4]/*[3]"))
+    Meeseeks.one(result, xpath("./div[4]/*[3]"))
     |> Meeseeks.own_text()
   end
 
   defp meeseeks_xpath_repo_stars_today(result) do
-    Meeseeks.one(result, xpath("./*[4]/*[6]"))
+    Meeseeks.one(result, xpath("./div[4]/*[6]"))
     |> Meeseeks.own_text()
   end
 end

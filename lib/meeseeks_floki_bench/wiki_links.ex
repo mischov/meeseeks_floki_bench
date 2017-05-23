@@ -11,7 +11,7 @@ defmodule MeeseeksFlokiBench.WikiLinks do
 
   def floki_wiki_links(html) do
     Floki.find(html, "#mw-content-text > p a[href^=\"/wiki/\"]")
-    |> Enum.map(&Floki.attribute(&1, "href"))
+    |> Floki.attribute("href")
   end
 
   # Meeseeks CSS
