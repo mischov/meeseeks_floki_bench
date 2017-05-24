@@ -40,14 +40,14 @@ Benchmarking Meeseeks CSS select links...
 Benchmarking Meeseeks XPath select links...
 
 Name                                  ips        average  deviation         median
-Meeseeks CSS select links           92.43       10.82 ms     ±2.82%       10.74 ms
-Floki select links                  78.05       12.81 ms     ±6.65%       12.97 ms
-Meeseeks XPath select links         69.92       14.30 ms     ±2.11%       14.20 ms
+Meeseeks CSS select links           93.08       10.74 ms     ±2.24%       10.68 ms
+Floki select links                  79.35       12.60 ms     ±5.93%       12.46 ms
+Meeseeks XPath select links         70.75       14.14 ms     ±1.87%       14.09 ms
 
 Comparison:
-Meeseeks CSS select links           92.43
-Floki select links                  78.05 - 1.18x slower
-Meeseeks XPath select links         69.92 - 1.32x slower
+Meeseeks CSS select links           93.08
+Floki select links                  79.35 - 1.17x slower
+Meeseeks XPath select links         70.75 - 1.32x slower
 ```
 
 If you're going to be building a simple crawler where all you care about is searching a page for links, both Meeseeks and Floki will probably perform similarly. If you're going to use XPath selectors, avoid early filters if you can.
@@ -72,14 +72,14 @@ Benchmarking Meeseeks CSS select repos...
 Benchmarking Meeseeks XPath select repos...
 
 Name                                  ips        average  deviation         median
-Meeseeks CSS select repos           22.32       44.80 ms     ±1.16%       44.72 ms
-Meeseeks XPath select repos         21.53       46.44 ms     ±1.55%       46.29 ms
-Floki select repos                  15.23       65.64 ms     ±2.73%       65.22 ms
+Meeseeks CSS select repos           23.14       43.22 ms     ±1.30%       43.12 ms
+Meeseeks XPath select repos         21.40       46.73 ms     ±1.04%       46.71 ms
+Floki select repos                  16.59       60.26 ms     ±2.21%       60.03 ms
 
 Comparison:
-Meeseeks CSS select repos           22.32
-Meeseeks XPath select repos         21.53 - 1.04x slower
-Floki select repos                  15.23 - 1.47x slower
+Meeseeks CSS select repos           23.14
+Meeseeks XPath select repos         21.40 - 1.08x slower
+Floki select repos                  16.59 - 1.39x slower
 ```
 
 If this scenario resembles your use case, it might be worth considering Meeseeks for performance reasons.

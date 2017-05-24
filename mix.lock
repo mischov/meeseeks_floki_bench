@@ -1,8 +1,8 @@
 %{"benchee": {:hex, :benchee, "0.6.0", "c2565506c621ee010e71d05f555e39a1b937e00810e284bc85463a4d4efc4b00", [:mix], [{:deep_merge, "~> 0.1", [hex: :deep_merge, optional: false]}]},
   "deep_merge": {:hex, :deep_merge, "0.1.1", "c27866a7524a337b6a039eeb8dd4f17d458fd40fbbcb8c54661b71a22fffe846", [:mix], []},
-  "floki": {:hex, :floki, "0.17.0", "ee23700dac178f601ae8cd05f8d8890a3dfd131fba8972dd3676bcedcb14a18d", [:mix], [{:mochiweb, "~> 2.15", [hex: :mochiweb, optional: false]}]},
-  "html5ever": {:hex, :html5ever, "0.3.0", "54fcb8331290363fd0e85301675e6079daf1524aef436104ed0bf485bc0757cd", [:mix], [{:rustler, "~> 0.9", [hex: :rustler, optional: false]}]},
-  "meeseeks": {:hex, :meeseeks, "0.5.0", "08e1b5756d6a8488cdff02b15e2c58804b0753902b0a5e99a39d606e97496247", [:mix], [{:meeseeks_html5ever, "~> 0.4.6", [hex: :meeseeks_html5ever, optional: false]}]},
-  "meeseeks_html5ever": {:hex, :meeseeks_html5ever, "0.4.6", "0afc606d519ec1b9d9ab66cfd26ca1e1f534bca1e5283f99bf61715e66ae3fca", [:mix], [{:rustler, "~> 0.9", [hex: :rustler, optional: false]}]},
+  "floki": {:hex, :floki, "0.17.1", "a56a54b493730910de3c7afcf353734d52a04ff2b8baa86f729bf4aa4580c0e2", [:mix], [{:mochiweb, "~> 2.15", [hex: :mochiweb, optional: false]}]},
+  "html5ever": {:hex, :html5ever, "0.4.0", "c63bf364062cbd2e6d8db057446db489da1d211d523a00a007dbf5aa3095acfc", [:mix], [{:rustler, "~> 0.9", [hex: :rustler, optional: false]}]},
+  "meeseeks": {:hex, :meeseeks, "0.6.0", "d7ad3d7efad79f892ea92f89510e21d957432b849dc697e6bce65cf89284b3f8", [:mix], [{:meeseeks_html5ever, "~> 0.5.0", [hex: :meeseeks_html5ever, optional: false]}]},
+  "meeseeks_html5ever": {:hex, :meeseeks_html5ever, "0.5.0", "746d714f1b9fa52e3130dd41f1f73174b77606a52a0a85a2247343041e98807b", [:mix], [{:rustler, "~> 0.9", [hex: :rustler, optional: false]}]},
   "mochiweb": {:hex, :mochiweb, "2.15.0", "e1daac474df07651e5d17cc1e642c4069c7850dc4508d3db7263a0651330aacc", [:rebar3], []},
   "rustler": {:hex, :rustler, "0.9.0", "6fa87ac78f48f70aa8ecfb6e16b8af41c398989d33de41d292b5581d6a2eeb5a", [:mix], []}}
