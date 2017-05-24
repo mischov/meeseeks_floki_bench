@@ -10,11 +10,12 @@ time = 15
 html = File.read!("data/wikipedia_hyperlink.html")
 
 Benchee.run%{
-  "Floki select links" => fn -> WikiLinks.floki_wiki_links(html) end,
-  "Meeseeks CSS select links" => fn ->
-    WikiLinks.meeseeks_css_wiki_links(html)
+  "Floki CSS" => fn -> WikiLinks.floki_wiki_links_css(html) end,
+  "Meeseeks CSS" => fn -> WikiLinks.meeseeks_wiki_links_css(html) end,
+  "Meeseeks XPath naive" => fn ->
+    WikiLinks.meeseeks_wiki_links_xpath_naive(html)
   end,
-  "Meeseeks XPath select links" => fn ->
-    WikiLinks.meeseeks_xpath_wiki_links(html)
+  "Meeseeks XPath optimized" => fn ->
+    WikiLinks.meeseeks_wiki_links_xpath_optimized(html)
   end
 }, warmup: warmup, time: time
