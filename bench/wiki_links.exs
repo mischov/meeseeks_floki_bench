@@ -3,8 +3,9 @@ alias MeeseeksFlokiBench.WikiLinks
 # Benchmark selecting every link from a particular Wikipedia article to
 # other Wikipedia articles.
 
-warmup = 5
-time = 15
+warmup = 3
+time = 9
+memory_time = 3
 
 # Test file is 99kB, and parses to ~2700 nodes
 html = File.read!("data/wikipedia_hyperlink.html")
@@ -18,4 +19,4 @@ Benchee.run%{
   "Meeseeks XPath optimized" => fn ->
     WikiLinks.meeseeks_wiki_links_xpath_optimized(html)
   end
-}, warmup: warmup, time: time
+}, warmup: warmup, time: time, memory_time: memory_time
