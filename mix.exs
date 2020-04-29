@@ -16,11 +16,10 @@ defmodule MeeseeksFlokiBench.Mixfile do
 
   defp deps do
     [
-      {:benchee, "~> 0.14"},
-      {:floki, "~> 0.20.4"},
-      {:html5ever, "~> 0.7.0"},
-      {:meeseeks, "~> 0.11.0"},
-      {:rustler, "~> 0.20.0", override: true}
+      {:benchee, "~> 1.0.1"},
+      {:floki, "~> 0.26.0"},
+      {:html5ever, "~> 0.8.0"},
+      {:meeseeks, "~> 0.15.0"}
     ]
   end
 end
