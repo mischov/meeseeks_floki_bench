@@ -10,10 +10,12 @@ defmodule MeeseeksFlokiBench.TrendingJs do
 
   def floki_trending_js_css(html) do
     Floki.find(html, "ol.repo-list > li")
-    |> Enum.map(fn(result) ->
-      %{name: floki_repo_name_css(result),
+    |> Enum.map(fn result ->
+      %{
+        name: floki_repo_name_css(result),
         stars: floki_repo_stars_css(result),
-        stars_today: floki_repo_stars_today_css(result)}
+        stars_today: floki_repo_stars_today_css(result)
+      }
     end)
   end
 
@@ -42,16 +44,19 @@ defmodule MeeseeksFlokiBench.TrendingJs do
 
   def meeseeks_trending_js_css(html) do
     Meeseeks.all(html, css("ol.repo-list > li"))
-    |> Enum.map(fn(result) ->
-      %{name: meeseeks_repo_name_css(result),
+    |> Enum.map(fn result ->
+      %{
+        name: meeseeks_repo_name_css(result),
         stars: meeseeks_repo_stars_css(result),
-        stars_today: meeseeks_repo_stars_today_css(result)}
+        stars_today: meeseeks_repo_stars_today_css(result)
+      }
     end)
   end
 
   defp meeseeks_repo_name_css(result) do
     Meeseeks.one(result, css("div h3 a"))
-    |> Meeseeks.own_text() # Already trims text, so no trim
+    # Already trims text, so no trim
+    |> Meeseeks.own_text()
   end
 
   defp meeseeks_repo_stars_css(result) do
@@ -68,16 +73,19 @@ defmodule MeeseeksFlokiBench.TrendingJs do
 
   def meeseeks_trending_js_xpath(html) do
     Meeseeks.all(html, xpath("ol[contains(@class, 'repo-list')]/li"))
-    |> Enum.map(fn(result) ->
-      %{name: meeseeks_repo_name_xpath(result),
+    |> Enum.map(fn result ->
+      %{
+        name: meeseeks_repo_name_xpath(result),
         stars: meeseeks_repo_stars_xpath(result),
-        stars_today: meeseeks_repo_stars_today_xpath(result)}
+        stars_today: meeseeks_repo_stars_today_xpath(result)
+      }
     end)
   end
 
   defp meeseeks_repo_name_xpath(result) do
     Meeseeks.one(result, xpath("./div/h3/a"))
-    |> Meeseeks.own_text() # Already trims text, so no trim
+    # Already trims text, so no trim
+    |> Meeseeks.own_text()
   end
 
   defp meeseeks_repo_stars_xpath(result) do

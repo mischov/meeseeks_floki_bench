@@ -31,7 +31,10 @@ defmodule MeeseeksFlokiBench.WikiLinks do
   # Meeseeks XPath Optimized
 
   def meeseeks_wiki_links_xpath_optimized(html) do
-    Meeseeks.all(html, xpath("/html/body/div[3]/div[3]/div[4]/p//a[starts-with(@href, '/wiki/')]"))
+    Meeseeks.all(
+      html,
+      xpath("/html/body/div[3]/div[3]/div[4]/p//a[starts-with(@href, '/wiki/')]")
+    )
     |> Enum.map(&Meeseeks.attr(&1, "href"))
   end
 end
